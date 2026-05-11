@@ -63,3 +63,145 @@ area that could use it. At the moment, it doesn't seem worth it. But, if
 someone wanted to create a different UI (e.g. a javascript front end that 
 ran in a browser), the 'need' for this separation increases. Maybe 
 someday. 
+
+---
+## More on Translating from Book Notation to Internal Data Structure
+
+The book's format is exampled below. Based on the poker books I've read, 
+this seems like a fairly common layout.
+
+```
+                           Unraised Pots
+|---------------------|----------------------|------------------|
+| *Early Position*    | *Middle Position*    | *Late Position*  |
+|                     |                      |                  |
+| *Raise:* AA-TT,     | *Raise:* AA-99, AKs- | *Raise:* AA-88,  |                
+| AKs, ATs, KQs,      | ATs, KQs-KJs, AK-    | AKs-A8s, KQs-    |
+| and AK-AQ           | AJ, and KQ           | KTs, QJs, AK-    |
+|                     |                      | AT, and KQ-KJ    |
+|                     |                      |                  |
+| *Call*: 99-77, KJs, | *Call:* 88-22, A9s-  | *Call:* 77-22,   |
+| QJs, AJ, and KQ     | A7s, KTs, QJs-QTs,   | A7s-A2s, K9s,    |
+|                     | JTs, AT, and KJ      | QTs-Q9s, JTs-    |
+|                     |                      | 87s, and J9s-T8s |
+|---------------------|----------------------|------------------|
+| *Small Blind*       | *Big Blind*          |                  |
+|                     |                      |                  |
+| *Raise:* ...        | *Raise:* ...         |                  |
+|                     |                      |                  |
+| *Call:* ...         | *Check:* Everything  |                  |
+|                     | else                 |                  |
+|---------------------|----------------------|------------------|
+```
+
+There's a similar table for Raised Pots.
+
+Let's translate some of the Late Position block for our purposes. I believe 
+that the examples I've selected represent all varieties of transformations.
+
+AA-88 means any pocket pair between Ace-Ace (AA) and Eight-Eight (88). 
+Note that both cards change in this transformation. 
+This translates to:
+
+| Hand | Previous Action | Position | Action |
+|------|-----------------|----------|--------|
+| AA   | Unraised        | Late     | Raise  |
+| KK   | Unraised        | Late     | Raise  |
+| QQ   | Unraised        | Late     | Raise  |
+| JJ   | Unraised        | Late     | Raise  |
+| TT   | Unraised        | Late     | Raise  |
+| 99   | Unraised        | Late     | Raise  |
+| 88   | Unraised        | Late     | Raise  |
+
+AKs-A8s means any suited Ace where the non-Ace is at least an Eight (8).
+Note that only one card changes in this transformation. 
+This translates to:
+
+| Hand | Previous Action | Position | Action |
+|------|-----------------|----------|--------|
+| AKs  | Unraised        | Late     | Raise  |
+| AQs  | Unraised        | Late     | Raise  |
+| AJs  | Unraised        | Late     | Raise  |
+| ATs  | Unraised        | Late     | Raise  |
+| A9s  | Unraised        | Late     | Raise  |
+| A8s  | Unraised        | Late     | Raise  |
+
+AK-AT means any unsuited Ace where the non-Ace is at least a Ten (T). 
+Note that only one card changes in this transformation. 
+This translates to:
+
+| Hand | Previous Action | Position | Action |
+|------|-----------------|----------|--------|
+| AK   | Unraised        | Late     | Raise  |
+| AQ   | Unraised        | Late     | Raise  |
+| AJ   | Unraised        | Late     | Raise  |
+| AT   | Unraised        | Late     | Raise  |
+
+JTs-87s means any suited connectors with no gap between Jack-Ten (JT) and Eight-Seven (87). 
+Note that both cards change in this transformation. 
+This translates to:
+
+| Hand | Previous Action | Position | Action |
+|------|-----------------|----------|--------|
+| JTs  | Unraised        | Late     | Call   |
+| T9s  | Unraised        | Late     | Call   |
+| 98s  | Unraised        | Late     | Call   |
+| 87s  | Unraised        | Late     | Call   |
+
+J9s-T8s means any suited connectors with 1 gap between Jack-Nine (J9) and Ten-Eight (T8). 
+Note that both cards change in this transformation. 
+This translates to:
+
+| Hand | Previous Action | Position | Action |
+|------|-----------------|----------|--------|
+| J9s  | Unraised        | Late     | Call   |
+| T8s  | Unraised        | Late     | Call   |
+
+Therefore, the entire Late Position section translates to:
+
+| Hand | Previous Action | Position | Action |
+|------|-----------------|----------|--------|
+| AA   | Unraised        | Late     | Raise  |
+| KK   | Unraised        | Late     | Raise  |
+| QQ   | Unraised        | Late     | Raise  |
+| JJ   | Unraised        | Late     | Raise  |
+| TT   | Unraised        | Late     | Raise  |
+| 99   | Unraised        | Late     | Raise  |
+| 88   | Unraised        | Late     | Raise  |
+| AKs  | Unraised        | Late     | Raise  |
+| AQs  | Unraised        | Late     | Raise  |
+| AJs  | Unraised        | Late     | Raise  |
+| ATs  | Unraised        | Late     | Raise  |
+| A9s  | Unraised        | Late     | Raise  |
+| A8s  | Unraised        | Late     | Raise  |
+| KQs  | Unraised        | Late     | Raise  |
+| KJs  | Unraised        | Late     | Raise  |
+| KTs  | Unraised        | Late     | Raise  |
+| QJs  | Unraised        | Late     | Raise  |
+| AK   | Unraised        | Late     | Raise  |
+| AQ   | Unraised        | Late     | Raise  |
+| AJ   | Unraised        | Late     | Raise  |
+| AT   | Unraised        | Late     | Raise  |
+| KQ   | Unraised        | Late     | Raise  |
+| KJ   | Unraised        | Late     | Raise  |
+| 77   | Unraised        | Late     | Call   |
+| 66   | Unraised        | Late     | Call   |
+| 55   | Unraised        | Late     | Call   |
+| 44   | Unraised        | Late     | Call   |
+| 33   | Unraised        | Late     | Call   |
+| 22   | Unraised        | Late     | Call   |
+| A7s  | Unraised        | Late     | Call   |
+| A6s  | Unraised        | Late     | Call   |
+| A5s  | Unraised        | Late     | Call   |
+| A4s  | Unraised        | Late     | Call   |
+| A3s  | Unraised        | Late     | Call   |
+| A2s  | Unraised        | Late     | Call   |
+| K9s  | Unraised        | Late     | Call   |
+| QTs  | Unraised        | Late     | Call   |
+| Q9s  | Unraised        | Late     | Call   |
+| JTs  | Unraised        | Late     | Call   |
+| T9s  | Unraised        | Late     | Call   |
+| 98s  | Unraised        | Late     | Call   |
+| 87s  | Unraised        | Late     | Call   |
+| J9s  | Unraised        | Late     | Call   |
+| T8s  | Unraised        | Late     | Call   |
