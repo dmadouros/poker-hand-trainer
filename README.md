@@ -12,16 +12,16 @@ answer is incorrect.
 And the end of the series of hands, you will be shown your total score 
 and some basic statistics:
 - what positions you were given
-- what previous action you were given
+- what previous actions you were given
 - what actions you took
 
 Mostly these stats are for debugging purposes. Specifically, the 
-"previous actions" as these are weighted for a game with little pre-flop 
+'previous actions' as these are weighted for a game with little pre-flop 
 raising.
 
 Good luck; have fun!
 
-To run the application:
+### To run the application:
 
 `./run.sh`
 
@@ -41,7 +41,7 @@ data. You would need to replace the contents of the `rows` attribute in
 `me.dmadouros.pokerhand.infrastructure.Database`. It was a PITA to 
 manually transform this data from the structure provided in the book to 
 the data structure used here and if someone (maybe me) wanted to spend 
-sometime writing a better translation mechanism from the book's notation 
+some time writing a better translation mechanism from the book's notation 
 system to how it is stored in the table or just a better data structure, 
 this could be a fun project for another time.
 - I opted to use [Mordant](https://github.com/ajalt/mordant) as a simpler 
