@@ -37,8 +37,8 @@ switched to using the Menlo font during development.
 ### Miscellaneous
 
 - In theory, this application works with any training set of opening hand 
-data. You would need to replace the contents of the `rows` attribute in 
-`me.dmadouros.pokerhand.infrastructure.Database`. It was a PITA to 
+data. You would need to replace the contents of the `rules` attribute in 
+`me.dmadouros.pokerhand.infrastructure.RuleSet`. It was a PITA to 
 manually transform this data from the structure provided in the book to 
 the data structure used here and if someone (maybe me) wanted to spend 
 some time writing a better translation mechanism from the book's notation 

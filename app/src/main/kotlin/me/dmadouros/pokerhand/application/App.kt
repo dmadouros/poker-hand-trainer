@@ -8,7 +8,7 @@ import me.dmadouros.pokerhand.domain.model.Deck
 import me.dmadouros.pokerhand.domain.model.Position
 import me.dmadouros.pokerhand.domain.model.PreviousAction
 import me.dmadouros.pokerhand.domain.model.ShuffledDeck
-import me.dmadouros.pokerhand.infrastructure.Database
+import me.dmadouros.pokerhand.infrastructure.RuleSet
 
 private const val UNICODE_CHECKMARK = "\u2705"
 private const val UNICODE_X = "\u274C"
@@ -43,7 +43,7 @@ data class Stats(
 class App {
     fun start() {
         val t = Terminal(interactive = true)
-        val db = Database()
+        val ruleSet = RuleSet()
         val deck = Deck.create()
         val stats = Stats()
 
@@ -51,8 +51,8 @@ class App {
         val maxQuestions = 100
         (1..maxQuestions).forEach { i ->
             t.clearScreen()
-            t.println("Question $i of $maxQuestions.")
-            score += tick(t, db, deck.shuffle(), stats)
+            t.println("Question $i of $MAX_QUESTIONS.")
+            score += tick(t, ruleSet, deck.shuffle(), stats)
 
             t.println()
             t.println("Your score: $score/$i")
@@ -66,13 +66,14 @@ class App {
             )
         }
         t.clearScreen()
-        t.println("Your final score: $score/$maxQuestions")
-        t.println("Stats: $stats")
+        t.println("Your final score: $score/$MAX_QUESTIONS")
+        t.println()
+        t.println(stats)
     }
 
     private fun tick(
         t: Terminal,
-        db: Database,
+        ruleSet: RuleSet,
         deck: ShuffledDeck,
         stats: Stats,
     ): Int {
@@ -107,7 +108,7 @@ class App {
         val actual = options[input - 1]
         stats.onAction(actual)
 
-        val expected = db.findAction(position, previousAction, hand)
+        val expected = ruleSet.findAction(position, previousAction, hand)
         val symbol =
             if (expected == actual) {
                 UNICODE_CHECKMARK
