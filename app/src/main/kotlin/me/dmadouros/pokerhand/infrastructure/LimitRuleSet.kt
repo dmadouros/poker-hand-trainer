@@ -4,8 +4,9 @@ import me.dmadouros.pokerhand.domain.model.Action
 import me.dmadouros.pokerhand.domain.model.Hand
 import me.dmadouros.pokerhand.domain.model.Position
 import me.dmadouros.pokerhand.domain.model.PreviousAction
+import me.dmadouros.pokerhand.domain.model.RuleSet
 
-class RuleSet {
+class LimitRuleSet : RuleSet {
     private data class Rule(
         val hand: String,
         val previousAction: PreviousAction,
@@ -286,7 +287,7 @@ class RuleSet {
             Rule("AKs", PreviousAction.RAISED_AND_RERAISED, Position.BIG_BLIND, Action.RAISE),
         )
 
-    fun findAction(
+    override fun findAction(
         position: Position,
         previousAction: PreviousAction,
         hand: Hand,

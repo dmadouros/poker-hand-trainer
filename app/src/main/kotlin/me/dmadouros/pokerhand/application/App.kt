@@ -8,7 +8,8 @@ import me.dmadouros.pokerhand.domain.model.Deck
 import me.dmadouros.pokerhand.domain.model.Position
 import me.dmadouros.pokerhand.domain.model.PreviousAction
 import me.dmadouros.pokerhand.domain.model.ShuffledDeck
-import me.dmadouros.pokerhand.infrastructure.RuleSet
+import me.dmadouros.pokerhand.domain.model.RuleSet
+import me.dmadouros.pokerhand.infrastructure.LimitRuleSet
 
 private const val UNICODE_CHECKMARK = "\u2705"
 private const val UNICODE_X = "\u274C"
@@ -17,7 +18,7 @@ private const val MAX_QUESTIONS = 10
 class App {
     fun start() {
         val t = Terminal(interactive = true)
-        val ruleSet = RuleSet()
+        val ruleSet = LimitRuleSet()
         val deck = Deck.create()
         val stats = Stats()
 
