@@ -16,7 +16,7 @@ and some basic statistics:
 - what actions you took
 
 Mostly these stats are for debugging purposes. Specifically, the 
-'previous actions' as these are weighted for a game with little pre-flop 
+'previous actions', as these are weighted for a game with little pre-flop 
 raising.
 
 Good luck; have fun!
@@ -29,7 +29,7 @@ Good luck; have fun!
 
 ### Problems I Ran Into
 
-1. If `run.sh` is not executable, try: `chmod u+x run.sh`
+1. Duh. If `run.sh` is not executable, try: `chmod u+x run.sh`
 2. I use `iTerm2` and the font I was using (Inconsolata Nerd Font) used a 
 different (and much worse) &hearts; icon than I wanted. To fix this, I 
 switched to using the Menlo font during development.
