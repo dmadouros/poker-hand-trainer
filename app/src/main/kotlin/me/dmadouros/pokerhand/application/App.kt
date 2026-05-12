@@ -74,7 +74,7 @@ class App {
         t: Terminal,
         db: Database,
         deck: ShuffledDeck,
-        stats: Stats
+        stats: Stats,
     ): Int {
         t.println()
 
@@ -128,14 +128,8 @@ class App {
         previousAction: PreviousAction,
         position: Position,
     ): List<Action> =
-        if (previousAction == PreviousAction.UNRAISED) {
-            if (position == Position.BIG_BLIND) {
-                listOf(Action.CHECK, Action.RAISE)
-            } else {
-                listOf(Action.CALL, Action.RAISE, Action.FOLD)
-            }
-        } else if (previousAction == PreviousAction.RAISED) {
-            listOf(Action.CALL, Action.RAISE, Action.FOLD)
+        if (previousAction == PreviousAction.UNRAISED && position == Position.BIG_BLIND) {
+            listOf(Action.CHECK, Action.RAISE)
         } else {
             listOf(Action.CALL, Action.RAISE, Action.FOLD)
         }
