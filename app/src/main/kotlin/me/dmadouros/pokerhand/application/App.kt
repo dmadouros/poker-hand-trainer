@@ -13,7 +13,7 @@ import me.dmadouros.pokerhand.infrastructure.LimitRuleSet
 
 private const val UNICODE_CHECKMARK = "\u2705"
 private const val UNICODE_X = "\u274C"
-private const val MAX_QUESTIONS = 10
+private const val MAX_QUESTIONS = 100
 
 class App {
     fun start() {
