@@ -8,7 +8,8 @@ enum class PreviousAction(
 ) {
     UNRAISED("No one before you has raised", 66),
     RAISED("Someone before you has raised", 22),
-    RAISED_AND_RERAISED("Someone before you raised and someone else reraised", 12);
+    RAISED_AND_RERAISED("Someone before you raised and someone else reraised", 12),
+    ;
 
     companion object {
         fun weightedRandom(): PreviousAction {
