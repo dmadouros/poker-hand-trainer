@@ -7,8 +7,8 @@ import me.dmadouros.pokerhand.domain.model.Action
 import me.dmadouros.pokerhand.domain.model.Deck
 import me.dmadouros.pokerhand.domain.model.Position
 import me.dmadouros.pokerhand.domain.model.PreviousAction
-import me.dmadouros.pokerhand.domain.model.ShuffledDeck
 import me.dmadouros.pokerhand.domain.model.RuleSet
+import me.dmadouros.pokerhand.domain.model.ShuffledDeck
 import me.dmadouros.pokerhand.infrastructure.LimitRuleSet
 
 private const val UNICODE_CHECKMARK = "\u2705"

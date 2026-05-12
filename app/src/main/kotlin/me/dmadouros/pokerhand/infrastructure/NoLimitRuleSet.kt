@@ -1,0 +1,62 @@
+package me.dmadouros.pokerhand.infrastructure
+
+import me.dmadouros.pokerhand.domain.model.Action
+import me.dmadouros.pokerhand.domain.model.Position
+import me.dmadouros.pokerhand.domain.model.PreviousAction
+
+class NoLimitRuleSet : BaseRuleSet() {
+    override val rules =
+        setOf(
+            Rule("AA", PreviousAction.UNRAISED, Position.EARLY, Action.RAISE),
+            Rule("KK", PreviousAction.UNRAISED, Position.EARLY, Action.RAISE),
+            Rule("QQ", PreviousAction.UNRAISED, Position.EARLY, Action.RAISE),
+            Rule("JJ", PreviousAction.UNRAISED, Position.EARLY, Action.RAISE),
+            Rule("TT", PreviousAction.UNRAISED, Position.EARLY, Action.RAISE),
+            Rule("AKs", PreviousAction.UNRAISED, Position.EARLY, Action.RAISE),
+            Rule("AK", PreviousAction.UNRAISED, Position.EARLY, Action.RAISE),
+            Rule("AA", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("KK", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("QQ", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("JJ", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("TT", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("99", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("AKs", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("AQs", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("AK", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("AQ", PreviousAction.UNRAISED, Position.MIDDLE, Action.RAISE),
+            Rule("AA", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("KK", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("QQ", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("JJ", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("TT", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("99", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("88", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("77", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("AKs", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("AQs", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("AJs", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("ATs", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("KQs", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("AK", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("AQ", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("AJ", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("AT", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("KQ", PreviousAction.UNRAISED, Position.LATE, Action.RAISE),
+            Rule("AA", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("KK", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("QQ", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("JJ", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("TT", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("99", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("AKs", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("AQs", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("AJs", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("ATs", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("KQs", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("KJs", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("AK", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("AQ", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("AJ", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+            Rule("KQ", PreviousAction.UNRAISED, Position.BIG_BLIND, Action.RAISE),
+        )
+}
