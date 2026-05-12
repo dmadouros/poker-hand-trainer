@@ -12,33 +12,7 @@ import me.dmadouros.pokerhand.infrastructure.RuleSet
 
 private const val UNICODE_CHECKMARK = "\u2705"
 private const val UNICODE_X = "\u274C"
-
-data class Stats(
-    private val previousActions: MutableMap<PreviousAction, Int> = mutableMapOf(),
-    private val positions: MutableMap<Position, Int> = mutableMapOf(),
-    private val actions: MutableMap<Action, Int> = mutableMapOf(),
-) {
-    fun onPreviousAction(previousAction: PreviousAction) {
-        if (!previousActions.containsKey(previousAction)) {
-            previousActions[previousAction] = 0
-        }
-        previousActions[previousAction] = previousActions[previousAction]!! + 1
-    }
-
-    fun onPosition(position: Position) {
-        if (!positions.containsKey(position)) {
-            positions[position] = 0
-        }
-        positions[position] = positions[position]!! + 1
-    }
-
-    fun onAction(action: Action) {
-        if (!actions.containsKey(action)) {
-            actions[action] = 0
-        }
-        actions[action] = actions[action]!! + 1
-    }
-}
+private const val MAX_QUESTIONS = 10
 
 class App {
     fun start() {
@@ -48,8 +22,7 @@ class App {
         val stats = Stats()
 
         var score = 0
-        val maxQuestions = 100
-        (1..maxQuestions).forEach { i ->
+        (1..MAX_QUESTIONS).forEach { i ->
             t.clearScreen()
             t.println("Question $i of $MAX_QUESTIONS.")
             score += tick(t, ruleSet, deck.shuffle(), stats)
