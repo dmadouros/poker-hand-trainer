@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.ktlint)
     application
 }
 
@@ -32,4 +33,8 @@ application {
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
+}
+
+ktlint {
+    version = "1.8.0"
 }

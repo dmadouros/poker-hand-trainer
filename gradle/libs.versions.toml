@@ -2,6 +2,8 @@
 junit-jupiter = "5.12.1"
 assertk = "0.28.1"
 mordant = "3.0.2"
+ktlint = "14.2.0"
+
 
 [libraries]
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
@@ -10,3 +12,4 @@ mordant = { module = "com.github.ajalt.mordant:mordant", version.ref = "mordant"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = "2.2.21" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
